@@ -18,6 +18,7 @@ private:
 };
 
 Vector::Vector(Vector& v){ // copy constructor
+	std::cout << "copy constructor\n";
 	sz = v.sz;
 	
 	elem = new double[sz];
@@ -33,6 +34,11 @@ int main(){
 
 	Vector z(v); // works because copy constructor is defined
 	print(z);
+
+	Vector t{12};
+	Vector r = t; // copy constructor again
+	print(r);
+
 }
 
 

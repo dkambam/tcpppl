@@ -18,15 +18,16 @@ private:
 	int sz;
 };
 
-Vector& Vector::operator=(Vector& v){
+Vector& Vector::operator=(Vector& v){ // copy assignment
 	std::cout << "copy assignment\n";
 	if(elem != nullptr) { delete[] elem; }
 
+	sz = v.size();
+	elem = new double[sz];
 	for(int i=0; i!=v.size(); i++){
 		elem[i] = v.elem[i];
 	}
-
-	sz = v.size();
+	
 	return *this;
 }	
 
@@ -34,15 +35,8 @@ void print(Vector& v);
 
 int main(){
 	Vector v{1,2,4};
-	print(v);
-
-	Vector z(v); 
-	print(z);
-
-	Vector r = z; // works because copy constructor is defined
-
-	Vector t{22,33};
-	r = t; // copy assignment at work
+	Vector r;
+	r = v; // copy assignment at work
 	print(r);
 
 }
